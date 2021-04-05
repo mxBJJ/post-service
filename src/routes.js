@@ -5,6 +5,7 @@ const middleware = require('./middleware/authMiddleware')
 const router = express.Router()
 
 router.get('/posts', postController.index)
+router.delete('/posts/:postId', middleware, postController.delete)
 router.post('/posts', middleware, postController.create)
 router.get('/usuario/posts', middleware, postController.findById)
 

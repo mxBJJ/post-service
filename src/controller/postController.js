@@ -41,5 +41,21 @@ module.exports = {
             console.log(error)
             return res.status(500).send({ message: 'Erro ao buscar produtos.' })
         }
+    },
+
+    async delete(req, res) {
+
+        const postId = req.params.postId
+
+        try {
+
+            await Post.deleteOne({ _id: postId })
+            return res.status(200).send({ success: true })
+
+        } catch (error) {
+            console.log(error)
+            return res.status(500).send({ message: 'Erro ao deletar anúncio.' })
+        }
     }
+
 }
