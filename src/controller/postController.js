@@ -1,16 +1,19 @@
 const Post = require('../model/post')
+const User = require('../model/user')
 
 module.exports = {
 
     async create(req, res) {
 
-        const { name, description, imgUrl, user } = req.body
+        const { title, description, img, contact, location, user } = req.body
 
         try {
             const post = await Post.create({
-                name,
+                title,
                 description,
-                imgUrl,
+                img,
+                location,
+                contact,
                 user
             })
 
@@ -22,7 +25,7 @@ module.exports = {
 
     async index(req, res) {
         try {
-            const posts = await Post.find()
+            const posts = await Post.find().populate("user")
 
             return res.send({ posts })
         } catch (error) {
@@ -34,7 +37,7 @@ module.exports = {
         const userId = req.query.userId
 
         try {
-            const posts = await Post.find({ user: userId })
+            const posts = await Post.find({ user: userId }).populate("user")
 
             return res.send({ posts })
         } catch (error) {

@@ -2,7 +2,7 @@ const mongoose = require('../database/connection')
 const { Schema } = require('mongoose')
 
 const PostSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
         required: true
     },
@@ -11,7 +11,7 @@ const PostSchema = new mongoose.Schema({
         type: String
     },
 
-    imgUrl: {
+    img: {
         type: String
     },
 
@@ -19,6 +19,14 @@ const PostSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true
+    },
+
+    location: {
+        type: String
+    },
+
+    contact: {
+        type: String
     },
 
     createdAt: {
