@@ -7,6 +7,11 @@ const PostSchema = new mongoose.Schema({
         required: true
     },
 
+    state: {
+        type: String,
+        required: true
+    },
+
     description: {
         type: String
     },
