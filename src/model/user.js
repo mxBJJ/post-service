@@ -26,7 +26,8 @@ const UserSchema = new mongoose.Schema({
     },
 
     rating: {
-        type: Number
+        type: Number,
+        required: true
     },
 
     createdAt: {
