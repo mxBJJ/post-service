@@ -5,12 +5,13 @@ module.exports = {
 
     async create(req, res) {
 
-        const { title, state, description, img, contact, location, user } = req.body
+        const { title, state, description, img, contact, location, user, category } = req.body
 
         try {
             const post = await Post.create({
                 title,
                 state,
+                category,
                 description,
                 img,
                 location,
