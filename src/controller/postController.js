@@ -39,7 +39,7 @@ module.exports = {
         const userId = req.query.userId
 
         try {
-            const posts = await Post.find({ user: userId }).populate("user")
+            const posts = await Post.find({ user: userId })
 
             return res.send({ posts })
         } catch (error) {
