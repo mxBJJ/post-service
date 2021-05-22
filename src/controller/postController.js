@@ -5,7 +5,7 @@ module.exports = {
 
     async create(req, res) {
 
-        const { title, state, description, img, contact, location, user, category } = req.body
+        const { title, state, description, img, location, user, category } = req.body
 
         try {
             const post = await Post.create({
