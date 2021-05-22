@@ -35,10 +35,6 @@ const PostSchema = new mongoose.Schema({
         type: String
     },
 
-    contact: {
-        type: String
-    },
-
     createdAt: {
         type: Date,
         default: Date.now
