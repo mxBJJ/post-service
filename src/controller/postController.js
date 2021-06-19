@@ -35,7 +35,7 @@ module.exports = {
         
         try {
 
-        if(orderBy == 1){
+        if(orderBy == 0){
 
             const posts = await Post
             .find({location: {$regex: cityFilter}, category: {$regex: categoryFilter}}).sort({createdAt: -1}).populate("user")
