@@ -25,8 +25,18 @@ module.exports = {
     },
 
     async index(req, res) {
+
+
+        let categoryFilter = req.query.category
+        let cityFilter = req.query.city
+        let orderBy = req.query.orderBy
+
+        console.log(categoryFilter)
+
         try {
-            const posts = await Post.find().populate("user")
+
+            const posts = await Post
+            .find({location: {$regex: cityFilter}, category: {$regex: categoryFilter}}).populate("user")
 
             return res.send({ posts })
         } catch (error) {
