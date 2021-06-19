@@ -31,14 +31,23 @@ module.exports = {
         let cityFilter = req.query.city
         let orderBy = req.query.orderBy
 
-        console.log(categoryFilter)
-
+        console.log(orderBy)
+        
         try {
 
+        if(orderBy == 1){
+
             const posts = await Post
-            .find({location: {$regex: cityFilter}, category: {$regex: categoryFilter}}).populate("user")
+            .find({location: {$regex: cityFilter}, category: {$regex: categoryFilter}}).sort({createdAt: -1}).populate("user")
 
             return res.send({ posts })
+        }
+
+        const posts = await Post
+        .find({location: {$regex: cityFilter}, category: {$regex: categoryFilter}}).sort({title: 1}).populate("user")
+
+        return res.send({ posts })  
+
         } catch (error) {
             return res.status(500).send({ message: 'Erro ao buscar produtos.' })
         }
